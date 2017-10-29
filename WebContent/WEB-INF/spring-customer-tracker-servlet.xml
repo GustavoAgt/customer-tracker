@@ -15,7 +15,7 @@
 		http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 	<!-- Add support for component scanning -->
-	<context:component-scan base-package="com.customertracker.controller" />
+	<context:component-scan base-package="com.customertracker" />
 
 	<!-- Add support for conversion, formatting and validation support -->
 	<mvc:annotation-driven/>
@@ -51,6 +51,7 @@
 		   <props>
 		      <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
 		      <prop key="hibernate.show_sql">true</prop>
+		      <!-- <prop key="hibernate.current_session_context_class">thread</prop>-->
 		   </props>
 		</property>
    </bean>	  
