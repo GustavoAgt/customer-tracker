@@ -1,6 +1,19 @@
 .space-container{
 	margin-top: 7%;
 }
+
 .space-button{
 	margin-bottom:2%;
+}
+
+.space-top{
+	margin-top:5%;	
+}
+
+.space-top-customerbuttonform{
+	margin-top:5%;
+}
+
+.space-left-elements-customerform{
+	margin-left:50%;
 }

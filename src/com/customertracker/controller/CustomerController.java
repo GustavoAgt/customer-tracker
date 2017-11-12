@@ -28,7 +28,9 @@ public class CustomerController {
 	}
 	
 	@RequestMapping("/showFormForAdd")
-	public String addCustomers() {
+	public String addCustomers(Model model) {
+		Customer customer = new Customer();
+		model.addAttribute("customer", customer);
 		return "create-customer-form";
 	}
 }
