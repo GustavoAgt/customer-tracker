@@ -6,4 +6,5 @@ import com.customertracker.entity.Customer;
 
 public interface CustomerService {
 	public List<Customer> getCustomers();
+	public void addCustomer(Customer customer);
 }
