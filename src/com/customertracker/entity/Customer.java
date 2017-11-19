@@ -11,7 +11,7 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="customer")
-public class Customer {
+public class Customer implements Comparable<Customer>{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -85,5 +85,10 @@ public class Customer {
 	public String toString() {
 		return "Customer [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + "]";
 	}
-	
+
+	@Override
+	public int compareTo(Customer customer) {
+		char firstCharAtString = customer.getLastName().charAt(0);
+		return this.getLastName().charAt(0) - firstCharAtString;
+	}	
 }

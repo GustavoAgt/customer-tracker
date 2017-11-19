@@ -1,5 +1,6 @@
 package com.customertracker.controller;
 
+import java.util.Collections;
 import java.util.List;
 import javax.validation.Valid;
 
@@ -27,8 +28,10 @@ public class CustomerController {
 	public String listCustomers(Model model) {
 		
 		List<Customer> customerList = customerService.getCustomers();
+		Collections.sort(customerList);
+	
 		model.addAttribute("customers", customerList);
-			
+		
 		return "list-customer";
 	}
 	
@@ -47,7 +50,8 @@ public class CustomerController {
 			return "create-customer-form";
 		}
 		
-//		customerService.addCustomer(customer);
+		customerService.addCustomer(customer);
+		
 		return "redirect:/customer/list";
 	}
 }
