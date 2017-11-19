@@ -11,6 +11,7 @@ import org.springframework.validation.BindingResult;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -46,7 +47,7 @@ public class CustomerController {
 	public String saveCustomer(@Valid @ModelAttribute("customer") Customer customer, BindingResult bindingResult) {
 			
 		if(bindingResult.hasErrors()) {
-			System.out.println(customer);
+			//Logger customer
 			return "create-customer-form";
 		}
 		
@@ -54,6 +55,19 @@ public class CustomerController {
 		
 		return "redirect:/customer/list";
 	}
+	
+	@GetMapping("{id}/update")
+	public String getUserById(@PathVariable int id, Model model) {
+		model.addAttribute(customerService.getCustomerById(id));
+		return "update-customer-form";
+	}
+	
+	@PostMapping("{id}/updateCustomer")
+	public String updateUserById(@ModelAttribute("customer") Customer customer){
+		customerService.updateCustomer(customer);
+		return "redirect:/customer/list";
+	}
+	
 }
 
 
