@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <html>
 <head>
@@ -23,22 +24,25 @@
 			<div class="col-md-8">
 				<button type="submit" class="btn btn-primary space-button" onclick="window.location.href='showFormForAdd'">Add Customer</button>
 				<div class="content">
-					<table class="table">
+					<table class="table">		  
 						  <thead class="thead-light">
 						    <tr>
 						      <th scope="col">#</th>
 						      <th scope="col">First Name</th>
 						      <th scope="col">Last Name</th>
 						      <th scope="col">Email</th>
+						      <th scope="col"></th>
 						    </tr>
 						  </thead>
 						  <tbody>
 							  <c:forEach var="tempCustomer" items="${customers}">
+							  	<spring:url value="${tempCustomer.id}/update" var="updateUrl"></spring:url>
 							  	  <tr>
-							      <th scope="row"><script>document.write(listIterationValue())</script></th>
-							      <td>${tempCustomer.firstName}</td>
-							      <td>${tempCustomer.lastName}</td>
-							      <td>${tempCustomer.email}</td>
+							      	<th scope="row"><script>document.write(listIterationValue())</script></th>
+							      	<td>${tempCustomer.firstName}</td>
+							      	<td>${tempCustomer.lastName}</td>
+							      	<td>${tempCustomer.email}</td>
+							      	<td><button class="btn btn-info" onclick="location.href='${updateUrl}'">Update</button></td>
 							    </tr>
 							  </c:forEach>
 						  </tbody>
