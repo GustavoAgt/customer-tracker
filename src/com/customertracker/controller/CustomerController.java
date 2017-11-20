@@ -52,7 +52,6 @@ public class CustomerController {
 		}
 		
 		customerService.addCustomer(customer);
-		
 		return "redirect:/customer/list";
 	}
 	
@@ -68,6 +67,11 @@ public class CustomerController {
 		return "redirect:/customer/list";
 	}
 	
+	@PostMapping("list/{id}/delete")
+	public String deleteCustomer(@PathVariable int id) {
+		customerService.deleteCustomer(id);
+		return "redirect:/customer/list";
+	} 
 }
 
 
